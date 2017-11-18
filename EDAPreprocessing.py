@@ -5,6 +5,13 @@
     #metadata variable(s) that you're trying to isolate
     #Google Drive login credentials
 
+import sys
+
+def main():
+    settings = sys.argv[0]
+
+main()
+
 
 #function: get file names--return as list
 #function: make .txt files
