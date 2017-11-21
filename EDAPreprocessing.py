@@ -6,9 +6,23 @@
     #Google Drive login credentials
 
 import sys
+import argparse
 
 def main():
-    settings = sys.argv[0]
+    settings = sys.argv
+
+    #WORK ON ON ARGPARSER
+    parser = argparse.ArgumentParser(description='Run preprocessing for EDA data.')
+    parser.add_argument('wavPath', metavar='wavPath', type=str, help='the path to the directory where your .wav files '
+                                                                     'are stored')
+
+    parser.add_argument('outPath', metavar='outPath', type=str, help='the path to the directory where you want your '
+                                                                     'output files stored')
+
+    args = parser.parse_args()
+    print args
+    # print settings
+
 
 main()
 
