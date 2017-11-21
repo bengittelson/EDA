@@ -9,20 +9,21 @@ import sys
 import argparse
 
 def main():
-    settings = sys.argv
 
-    #WORK ON ON ARGPARSER
     parser = argparse.ArgumentParser(description='Run preprocessing for EDA data.')
     parser.add_argument('wavPath', metavar='wavPath', type=str, help='the path to the directory where your .wav files '
                                                                      'are stored')
-
     parser.add_argument('outPath', metavar='outPath', type=str, help='the path to the directory where you want your '
                                                                      'output files stored')
+    parser.add_argument('metadata', metavar='metadata', type=str, help='the name of your metadata file')
+    parser.add_argument('metadata variables', metavar='metadataVars', type=str, help='the name of your metadata file',
+                        nargs='*')
+
+    #add Google Drive credentials
+    # parser.add_argument('Google ')
 
     args = parser.parse_args()
     print args
-    # print settings
-
 
 main()
 
