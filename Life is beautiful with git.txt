@@ -1,1 +1,3 @@
 Life is beautiful with git. 
+
+Life is boring. 
