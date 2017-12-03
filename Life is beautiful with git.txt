@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+Life is beautiful with git.
+
+Otherwise it's a bit of letdown. =======
+Life is beautiful with git. 
+
+Life is boring. 
+>>>>>>> Yang
