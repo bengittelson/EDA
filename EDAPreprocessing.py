@@ -18,27 +18,28 @@ def main():
     parser.add_argument('outPath', metavar='outPath', type=str, help='the path to the directory where you want your '
                                                                      'output files stored')
     parser.add_argument('metadata', metavar='metadata', type=str, help='the name of your metadata file')
-    parser.add_argument('metadata variables', metavar='metadataVars', type=str, help='the name of your metadata file',
+    parser.add_argument('metadataVars', metavar='metadataVars', type=str, help='the variables and values by which '
+                                                                                     'you want to filter',
                         nargs='*')
 
     #add Google Drive credentials
     # parser.add_argument('Google ')
 
-    args = vars(parser.parse_args())
 
-    for key in args:
-        print key
-        if key == 'wavPath':
-            wavPath = args[key]
+    args = parser.parse_args()
 
-    print wavPath
-
-
+    #assign command-line arguments to variables:
+    wavPath = args.wavPath
+    outPath = args.outPath
+    metadata = args.metadata
+    metadataVars = args.metadataVars
 
 main()
 
 
 def getFileNames(metadata, metadataVars, wavPath):
+
+    #POSSIBLE LINK FOR HOW TO TAKE IN METADATA VARS: https://stackoverflow.com/questions/18608812/accepting-a-dictionary-as-an-argument-with-argparse-and-python
 
     #store fileNames as a dictionary of file names and phrases
     relFiles = []
