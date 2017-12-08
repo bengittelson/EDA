@@ -1,0 +1,10 @@
+{
+	"metadata": "export_recordings_full_V3.csv",
+	"wavPath": "/Users/benjamingittelson/Documents/BAAP/BAAP Python Scripts/TestBatch",
+	"outPath": "/Users/benjamingittelson/Documents/BAAP/BAAP Python Scripts/TestRun",
+	"metadataVars": {
+		"Ethnicity": "Other",
+		"Gender": "Female"
+	}
+
+}

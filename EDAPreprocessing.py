@@ -5,44 +5,29 @@
     #metadata variable(s) that you're trying to isolate
     #Google Drive login credentials
 
-import sys
+import json
 import csv
 import argparse
 import re
-
-def main():
-
-    parser = argparse.ArgumentParser(description='Run preprocessing for EDA data.')
-    parser.add_argument('wavPath', metavar='wavPath', type=str, help='the path to the directory where your .wav files '
-                                                                     'are stored')
-    parser.add_argument('outPath', metavar='outPath', type=str, help='the path to the directory where you want your '
-                                                                     'output files stored')
-    parser.add_argument('metadata', metavar='metadata', type=str, help='the name of your metadata file')
-    parser.add_argument('metadataVars', metavar='metadataVars', type=str, help='the variables and values by which '
-                                                                                     'you want to filter',
-                        nargs='*')
-
-    #add Google Drive credentials
-    # parser.add_argument('Google ')
+import sys
 
 
-    args = parser.parse_args()
-
-    #assign command-line arguments to variables:
-    wavPath = args.wavPath
-    outPath = args.outPath
-    metadata = args.metadata
-    metadataVars = args.metadataVars
-
-main()
 
 
 def getFileNames(metadata, metadataVars, wavPath):
-
     #POSSIBLE LINK FOR HOW TO TAKE IN METADATA VARS: https://stackoverflow.com/questions/18608812/accepting-a-dictionary-as-an-argument-with-argparse-and-python
 
     #store fileNames as a dictionary of file names and phrases
     relFiles = []
+
+    #read in csv file as data frame
+    #loop through metadataVars to create string of variable-value pairs that you want to query
+    #use df.query(aforementioned string) to get relevant rows, per this link: https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas
+
+
+
+
+
     with open(metadata, 'r') as file:
         reader = csv.reader(file)
 
@@ -51,9 +36,12 @@ def getFileNames(metadata, metadataVars, wavPath):
         # id_location = id_location - 1
 
         for row in reader:
-            #store metadataVars as a dictionary of variables and values?
-            for var in metadataVars:
-                #iterate to that variable column and check if the values match
+            for key, value in metadataVars:
+                #USE PANDAS HERE TO ACCESS VARIABLES DIRECTLY RATHER THAN ITERATING THROUGH ROWS
+                #pandas stackoverflow link: https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas
+
+                #create query string
+
                 pass
 
     return relFiles
@@ -78,3 +66,38 @@ def makeNewFiles(newFileName, phrase):
 #function: use WebMAUS API to create TextGrid files for .wav files that don't already have an associated .TextGrid
 #call Praat script to segment out specific words using http://www.fon.hum.uva.nl/praat/manual/Scripting_6_9__Calling_from_the_command_line.html
 
+def main():
+
+    # parser = argparse.ArgumentParser(description='Run preprocessing for EDA data.')
+    # parser.add_argument('wavPath', metavar='wavPath', type=str, help='the path to the directory where your .wav files '
+    #                                                                  'are stored')
+    # parser.add_argument('outPath', metavar='outPath', type=str, help='the path to the directory where you want your '
+    #                                                                  'output files stored')
+    # parser.add_argument('metadata', metavar='metadata', type=str, help='the name of your metadata file')
+    # parser.add_argument('metadataVars', metavar='metadataVars', type=str, help='the variables and values by which '
+    #                                                                                  'you want to filter')
+    #
+    #
+    # #add Google Drive credentials
+    # # parser.add_argument('Google ')
+    # args = parser.parse_args()
+    #
+    # #assign command-line arguments to variables:
+    # wavPath = args.wavPath
+    # outPath = args.outPath
+    # metadata = args.metadata
+    # metadataVars = json.loads(args.metadataVars)
+    #"/Users/benjamingittelson/Documents/BAAP/BAAP Python Scripts/TestBatch" "/Users/benjamingittelson/Documents/BAAP/BAAP Python Scripts/TestRun" export_recordings_full_V3.csv "{'Ethnicity': 'Other', 'Gender': 'Female'}"
+
+    #parse settings
+    settingsFile = sys.argv[1]
+    settings = json.load(open(settingsFile))
+
+    wavPath = settings['wavPath']
+    metadata = settings['metadata']
+    outPath = settings['outPath']
+    metadataVars=settings['metadataVars']
+
+    getFileNames(metadata, metadataVars, wavPath)
+
+main()
