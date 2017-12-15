@@ -10,6 +10,7 @@ import csv
 import argparse
 import re
 import sys
+import pandas as pd
 
 
 
@@ -21,12 +22,9 @@ def getFileNames(metadata, metadataVars, wavPath):
     relFiles = []
 
     #read in csv file as data frame
+    pd.read_csv(metadata)
     #loop through metadataVars to create string of variable-value pairs that you want to query
     #use df.query(aforementioned string) to get relevant rows, per this link: https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas
-
-
-
-
 
     with open(metadata, 'r') as file:
         reader = csv.reader(file)
