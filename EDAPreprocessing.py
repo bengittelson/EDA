@@ -20,27 +20,44 @@ def getFileNames(metadata, metadataVars, wavPath):
 
     #store fileNames as a dictionary of file names and phrases
     relFiles = []
-
     #read in csv file as data frame
-    pd.read_csv(metadata)
+    data = pd.read_csv(metadata)
     #loop through metadataVars to create string of variable-value pairs that you want to query
+    myQuery = ''
     #use df.query(aforementioned string) to get relevant rows, per this link: https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas
+    # df.loc[df]
 
-    with open(metadata, 'r') as file:
-        reader = csv.reader(file)
+    items = metadataVars.items()
+    for i in range(0, len(items)): 
+        print items[i]
+        if 
 
-        # # correct for zero-indexing
-        # phrase_location = phrase_location - 1
-        # id_location = id_location - 1
 
-        for row in reader:
-            for key, value in metadataVars:
-                #USE PANDAS HERE TO ACCESS VARIABLES DIRECTLY RATHER THAN ITERATING THROUGH ROWS
-                #pandas stackoverflow link: https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas
+        # if iterator.hasnext(): 
+        #     add = key + " == " + value + " | "
+        # else: 
+        #     add = key + " == " + value
+        # myQuery += add
+        # print "myQuery: " + myQuery
 
-                #create query string
+    # data.query(myQuery)
 
-                pass
+
+    # with open(metadata, 'r') as file:
+    #     reader = csv.reader(file)
+
+    #     # # correct for zero-indexing
+    #     # phrase_location = phrase_location - 1
+    #     # id_location = id_location - 1
+
+    #     for row in reader:
+    #         for key, value in metadataVars:
+    #             #USE PANDAS HERE TO ACCESS VARIABLES DIRECTLY RATHER THAN ITERATING THROUGH ROWS
+    #             #pandas stackoverflow link: https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas
+
+    #             #create query string
+
+    #             pass
 
     return relFiles
 
