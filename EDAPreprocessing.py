@@ -12,9 +12,6 @@ import re
 import sys
 import pandas as pd
 
-
-
-
 def getFileNames(metadata, metadataVars, wavPath):
     #POSSIBLE LINK FOR HOW TO TAKE IN METADATA VARS: https://stackoverflow.com/questions/18608812/accepting-a-dictionary-as-an-argument-with-argparse-and-python
 
@@ -27,11 +24,13 @@ def getFileNames(metadata, metadataVars, wavPath):
     #use df.query(aforementioned string) to get relevant rows, per this link: https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas
     # df.loc[df]
 
-    items = metadataVars.items()
-    for i in range(0, len(items)): 
-        print items[i]
-        if 
-
+    # items = metadataVars.items()
+    # for i in range(0, len(items)): 
+    #     if i < len(items)-1: 
+    #         myQuery = myQuery + items[i][0] + " == " + items[i][1] + " | "
+    #     else: 
+    #         myQuery = myQuery + items[i][0] + " == " + items[i][1]
+    
 
         # if iterator.hasnext(): 
         #     add = key + " == " + value + " | "
@@ -40,7 +39,7 @@ def getFileNames(metadata, metadataVars, wavPath):
         # myQuery += add
         # print "myQuery: " + myQuery
 
-    # data.query(myQuery)
+    data.query(metadataVars)
 
 
     # with open(metadata, 'r') as file:
