@@ -12,7 +12,13 @@ import re
 import sys
 import pandas as pd
 
-def getFileNames(metadata, metadataVars, wavPath):
+#getFiles (return entire rows from dataframe)
+#makeNewFiles (return just a list of the file names)
+#download from Google Drive
+
+
+
+def getFiles(metadata, metadataVars, wavPath):
     #POSSIBLE LINK FOR HOW TO TAKE IN METADATA VARS: https://stackoverflow.com/questions/18608812/accepting-a-dictionary-as-an-argument-with-argparse-and-python
 
     #store fileNames as a dictionary of file names and phrases
@@ -20,7 +26,7 @@ def getFileNames(metadata, metadataVars, wavPath):
     #read in csv file as data frame
     data = pd.read_csv(metadata)
     #loop through metadataVars to create string of variable-value pairs that you want to query
-    myQuery = ''
+    # myQuery = ''
     #use df.query(aforementioned string) to get relevant rows, per this link: https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas
     # df.loc[df]
 
@@ -39,7 +45,8 @@ def getFileNames(metadata, metadataVars, wavPath):
         # myQuery += add
         # print "myQuery: " + myQuery
 
-    data.query(metadataVars)
+    #relFiles = list(data.query(metadataVars)['recording'])
+    relFiles = data.query(metadataVars)
 
 
     # with open(metadata, 'r') as file:
@@ -58,23 +65,26 @@ def getFileNames(metadata, metadataVars, wavPath):
 
     #             pass
 
+    print relFiles[:10]
     return relFiles
 
 #function: get file names--return as list
 #function: make .txt files
 
 # makes the new file and writes the text to it
-def makeNewFiles(newFileName, phrase):
+def makeNewFiles(files):
     # extract the identifier from the file name column
-    fixedFileName = re.sub('.wav|recordings/', '', newFileName)
-    fixedFileName += ".txt"
+    for file in files: 
+        print file
+    #     fixedFileName = re.sub('.wav|recordings/', '', fileName)
+    #     fixedFileName += ".txt"
 
-    # make the new file
-    outfile = open(fixedFileName, 'w')
+    # # make the new file
+    # outfile = open(fixedFileName, 'w')
 
-    # print the phrase to the new file
-    outfile.write(phrase)
-    return fixedFileName
+    # # print the phrase to the new file
+    # outfile.write(phrase)
+    # return fixedFileName
 
 #function: download relevant files from Google drive using list of file names
 #function: use WebMAUS API to create TextGrid files for .wav files that don't already have an associated .TextGrid
@@ -112,6 +122,8 @@ def main():
     outPath = settings['outPath']
     metadataVars=settings['metadataVars']
 
-    getFileNames(metadata, metadataVars, wavPath)
+    relFiles = getFiles(metadata, metadataVars, wavPath)
+    makeNewFiles(relFiles)
+
 
 main()

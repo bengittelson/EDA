@@ -3,10 +3,4 @@
 	"wavPath": "/Users/benjamingittelson/Documents/BAAP/BAAP Python Scripts/TestBatch",
 	"outPath": "/Users/benjamingittelson/Documents/BAAP/BAAP Python Scripts/TestRun",
 	"metadataVars": "Gender == 'Female' & Ethnicity == 'Other' & Age <= 45"
-	// "metadataVars": {
-	// 	"Ethnicity": "Other",
-	// 	"Gender": "Female", 
-	// 	"Precise Ethnicity": "Chinese"
-	// }
-
 }
