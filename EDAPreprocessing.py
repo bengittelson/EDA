@@ -65,7 +65,7 @@ def getFiles(metadata, metadataVars, wavPath):
 
     #             pass
 
-    print relFiles[:10]
+    #print relFiles[:10]
     return relFiles
 
 #function: get file names--return as list
@@ -89,6 +89,27 @@ def makeNewFiles(files):
 #function: download relevant files from Google drive using list of file names
 #function: use WebMAUS API to create TextGrid files for .wav files that don't already have an associated .TextGrid
 #call Praat script to segment out specific words using http://www.fon.hum.uva.nl/praat/manual/Scripting_6_9__Calling_from_the_command_line.html
+
+#make unique identifier for each for each speaker: 
+def makeID(metadata): 
+    data = pd.read_csv(metadata)
+    #add a new column for the identifiers
+
+    identifier = 0
+
+    #set all identifiers equal to 
+    data['identifier'] = -1
+
+    #for each row in the file: https://stackoverflow.com/questions/23330654/update-a-dataframe-in-pandas-while-iterating-row-by-row/29262040
+    for i, row in data.iterrows(): 
+        #if the phrase is "There once was..."
+        breakPhrase = "There was once a poor shepherd boy who used to watch his flocks in the fields next to a dark forest near the foot of a mountain."
+        if row['phrase'] == breakPhrase: 
+            identifier = identifier + 1
+
+        #set the value: https://stackoverflow.com/questions/16729574/how-to-get-a-value-from-a-cell-of-a-dataframe
+        data['identifer'] = identifier
+    print data[:30]
 
 def main():
 
@@ -123,7 +144,9 @@ def main():
     metadataVars=settings['metadataVars']
 
     relFiles = getFiles(metadata, metadataVars, wavPath)
-    makeNewFiles(relFiles)
+    # makeNewFiles(relFiles)
+    makeID(metadata)
+
 
 
 main()
