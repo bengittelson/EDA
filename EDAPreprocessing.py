@@ -108,8 +108,8 @@ def makeID(metadata):
             identifier = identifier + 1
 
         #set the value: https://stackoverflow.com/questions/16729574/how-to-get-a-value-from-a-cell-of-a-dataframe
-        data['identifer'] = identifier
-    print data[:30]
+        data.loc[i, 'identifier'] = identifier
+    print data[:100]
 
 def main():
 
