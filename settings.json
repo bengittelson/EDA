@@ -1,6 +1,7 @@
 {
 	"metadata": "export_recordings_full_V3.csv",
-	"wavPath": "/Users/benjamingittelson/Documents/BAAP/BAAP Python Scripts/TestBatch",
-	"outPath": "/Users/benjamingittelson/Documents/BAAP/BAAP Python Scripts/TestRun",
-	"metadataVars": "Gender == 'Female' & Ethnicity == 'Other' & Age <= 45"
+	"wavPath": "/Volumes/Glide/a",
+	"outPath": "/Volumes/Glide/a/UKaudio_out",
+	"metadataVars": "phrase == 'However, not long after, a wolf that had just escaped from the zoo was looking for a change from its usual diet of chicken and duck.' | phrase == 'As soon as they heard him, the villagers all rushed from their homes, full of concern for his safety, and two of his cousins even stayed with him for a short while.' | phrase == 'One hot afternoon, he thought up a good plan to get some company for himself and also have a little fun. '", 
+	"APIkey": "AIzaSyBr6pBcIP5j3w_FH6SjNX0lYh41TzHAJMM"
 }
